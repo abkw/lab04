@@ -17,5 +17,13 @@ theMatrix <- linreg_mod$linreg(formula = Petal.Length~Sepal.Width+Sepal.Length, 
 y <- theMatrix[,ncol(theMatrix)]
 theMatrix <- theMatrix[,-ncol(theMatrix)]
 matTranspose <- t(theMatrix)
-result <- ((matTranspose%*%theMatrix)^-1)%*%matTranspose%*%y
-print(result)
+#---------------------------------------------Regression Coefficients-------------------------------
+regressionsCoefficients <- ((matTranspose%*%theMatrix)^-1)%*%matTranspose%*%y
+print(regressionsCoefficients)
+#---------------------------------------------Vitted Values-----------------------------------------
+fittedValue <- theMatrix %*% regressionsCoefficients
+#---------------------------------------------- The residuals --------------------------------------
+theResiduals <- y - fittedValue
+#----------------------------------------------The Degree of Freedom--------------------------------
+p <- regressionsCoefficients[1,]
+print (p)
