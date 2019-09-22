@@ -20,7 +20,7 @@ matTranspose <- t(theMatrix)
 #---------------------------------------------Regression Coefficients-------------------------------
 regressionsCoefficients <- ((matTranspose%*%theMatrix)^-1)%*%matTranspose%*%y
 print(regressionsCoefficients)
-#---------------------------------------------Vitted Values-----------------------------------------
+#---------------------------------------------Fitted Values-----------------------------------------
 fittedValue <- theMatrix %*% regressionsCoefficients
 #---------------------------------------------- The residuals --------------------------------------
 theResiduals <- y - fittedValue
@@ -33,5 +33,15 @@ print(degreeOfFreedom)
 
 #----------------------------------------------The Residual Variance--------------------------------
 
-residualVariance <- (t(theResiduals)%*%theResiduals) / degreeOfFreedom
+residualVariance <- as.numeric((t(theResiduals) %*% theResiduals) / degreeOfFreedom)
 print(residualVariance)
+
+#----------------------------------------------The Variance Of The Regression Coefficients----------
+
+varianceOfRegressionCoefficients <- residualVariance * ((matTranspose %*% theMatrix) ^ -1)
+print(varianceOfRegressionCoefficients)
+
+#----------------------------------------------The t-values For Each Coefficient--------------------
+
+# tValueForEachCoefficient <- regressionsCoefficients / sqrt(varianceOfRegressionCoefficients)
+# print(tValueForEachCoefficient)
