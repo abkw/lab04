@@ -27,3 +27,11 @@ theResiduals <- y - fittedValue
 #----------------------------------------------The Degree of Freedom--------------------------------
 p <- regressionsCoefficients[1,]
 print (p)
+
+degreeOfFreedom <- nrow(theMatrix) - ncol(theMatrix)
+print(degreeOfFreedom)
+
+#----------------------------------------------The Residual Variance--------------------------------
+
+residualVariance <- (t(theResiduals)%*%theResiduals) / degreeOfFreedom
+print(residualVariance)
