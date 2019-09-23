@@ -1,4 +1,5 @@
 #This function uses RC class
+library(expm)
 linreg <- setRefClass("linreg", fields = list(formula= "formula", data="data.frame"),
                       methods = list(
                         linreg = function(formula = as.formula(), data=as.data.frame(),...) {
@@ -21,7 +22,10 @@ linreg_mod <- linreg$new()
 linreg_mod1<- linreg$new()
 
 linreg_mod1 <- linreg_mod$linreg1(formula = Petal.Length~Sepal.Width+Sepal.Length, data=iris)
-print(linreg_mod1$residuals)
+print(linreg_mod1)
+print(summary(linreg_mod1$sigma)**2)
+
+print(linreg_mod1$coefficients[,3])
 
 theMatrix <- linreg_mod$linreg(formula = Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 y <- theMatrix[,ncol(theMatrix)]
@@ -52,6 +56,7 @@ print(degreeOfFreedom)
 residualVariance <- as.numeric((t(theResiduals) %*% theResiduals) / degreeOfFreedom)
 print(residualVariance)
 
+
 #----------------------------------------------The Variance Of The Regression Coefficients----------
 
 varianceOfRegressionCoefficients <- residualVariance * solve(t(X) %*% X)
@@ -59,7 +64,8 @@ print(varianceOfRegressionCoefficients)
 
 #----------------------------------------------The t-values For Each Coefficient--------------------
 
-tValueForEachCoefficient <- regressionsCoefficients / sqrt(varianceOfRegressionCoefficients)
+tValueForEachCoefficient <- t(regressionsCoefficients) %*% sqrtm(varianceOfRegressionCoefficients)
+
+print(t(regressionsCoefficients))
+print(solve(sqrtm(varianceOfRegressionCoefficients)))
 print(tValueForEachCoefficient)
-print(regressionsCoefficients)
-print(sqrt(varianceOfRegressionCoefficients))
