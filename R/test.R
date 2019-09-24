@@ -1,5 +1,4 @@
 #This function uses RC class
-library(expm)
 linreg <- setRefClass("linreg", fields = list(formula= "formula", data="data.frame"),
                       methods = list(
                         linreg = function(formula = as.formula(), data=as.data.frame()) {
