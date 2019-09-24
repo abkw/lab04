@@ -23,6 +23,7 @@ linreg <- setRefClass(Class =  "linreg",
                       fields = list(
                         formula = "formula",
                         data = "data.frame",
+                        dataName = "character",
                         reg_coef = "matrix",
                         fitted_val = "matrix",
                         residuals = "matrix",
@@ -35,12 +36,16 @@ linreg <- setRefClass(Class =  "linreg",
 
                       methods = list(
 
-                        initialize = function(formula, data) {
+                        # initialize11 = function(formula, data) {
+                        #   formula <<- formula
+                        #   data <<- data
+                        #   dataName <- deparse(substitute(data))
+                        # },
+
+                        initialize = function(formula = as.formula, data = as.data.frame) {
                           formula <<- formula
                           data <<- data
-                        },
-
-                        calcParams = function() {
+                          dataName <<- deparse(substitute(data))
                           all_variables <- all.vars(formula)
                           indenpendent_var <- all_variables[-1]
                           dependent_var <- all_variables[1]
@@ -94,18 +99,26 @@ linreg <- setRefClass(Class =  "linreg",
                           # p-values
                           p_value <<- 2 * pt(-abs(tValueForEachCoefficient), df = degreeOfFreedom)
                           #print(p_value)
+                        },
+                        print = function() {
+                          cat(sep = "\n")
+                          cat("Call:")
+                          cat(sep = "\n")
+                          cat(paste("linreg(", "formula = ", formula[2], " ", formula[1], " ", formula[3], ", ", "data = ", dataName, ")", sep = "" ))
+
+                          cat(sep = "\n",sep = "\n")
+                          cat(sep = "\n")
+                          cat("Coefficients:")
+
+                          cat(sep = "\n")
+                          cat("     ",row.names(reg_coef))
+                          cat(sep = "\n")
+                          cat(paste("        ",reg_coef[1], "           ",reg_coef[2], "          ",reg_coef[3]))
+                          cat(reg_coef)
                         }
-
-
                       )
 )
 
 data("iris")
-item <- linreg$new(formula = Petal.Length~Sepal.Width+Sepal.Length, data = iris)
-print(item$calcParams())
-print(item$reg_coef)
-print(item$t_value)
-print(item$p_value)
-
-linearMod <- lm(Petal.Length~Sepal.Width+Sepal.Length, data=iris)  # build linear regression model on full data
-summary(linearMod)
+item <- linreg$new(formula = Petal.Length~Species, data = iris)
+print (lm(formula = Petal.Length~Species, data = iris))
