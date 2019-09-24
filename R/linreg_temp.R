@@ -18,7 +18,7 @@
 #' @examples
 #'
 
-linreg <- setRefClass(Class =  "linreg",
+linregOne <- setRefClass(Class =  "linregOne",
 
                       fields = list(
                         formula = "formula",
@@ -100,7 +100,7 @@ linreg <- setRefClass(Class =  "linreg",
 )
 
 data("iris")
-item <- linreg$new(formula = Petal.Length~Sepal.Width+Sepal.Length, data = iris)
+item <- linregOne$new(formula = Petal.Length~Sepal.Width+Sepal.Length, data = iris)
 print(item$calcParams())
 print(item$reg_coef)
 print(item$t_value)
@@ -108,3 +108,4 @@ print(item$p_value)
 
 linearMod <- lm(Petal.Length~Sepal.Width+Sepal.Length, data=iris)  # build linear regression model on full data
 summary(linearMod)
+
