@@ -96,6 +96,7 @@ linreg <- setRefClass(Class =  "linreg",
                           #print(p_value)
                         }
 
+
                       )
 )
 
