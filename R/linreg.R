@@ -124,22 +124,44 @@ linreg <- setRefClass(Class =  "linreg",
 
                         plot = function() {
 
-                          par(mfcol = c(2,2))
+                          par(mfcol = c(2,1))
                           plotData <- data.frame(fittedValues = fitted_val,residuals = residuals)
-                          risidualsVsFitted <- ggplot(data = plotData, aes(x = fitted_val, y = residuals, fill = residuals)) +
-                          geom_bar(stat = "identity") +
+
+                          risidualsVsFitted <- ggplot(data = plotData, aes(x = fitted_val, y = residuals)) +
+                          #geom_bar(stat = "identity") +
+                          geom_point(colour = "black", fill = "white") +
                           xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
                           ylab("Residuals") +
-                          ggtitle("Residuals vs Fitted")
+                          ggtitle("Residuals vs Fitted") +
+                          theme(plot.title = element_text(hjust = 0.5))
 
                           scaleLocation <- ggplot(data = plotData,
                           aes(x = fitted_val, y = sqrt(abs((residuals - mean(residuals)) / sqrt(residul_variance)
                           )))) +
-                          geom_bar(stat = "identity") +
+                          #geom_bar(stat = "identity") +
+                          geom_point() +
                           xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
                           ylab(expression(sqrt(abs("Standardized Residuals")))) +
-                          ggtitle("Scale-Location")
+                          ggtitle("Scale-Location") +
+                          theme(plot.title = element_text(hjust = 0.5))
+
                           return (grid.arrange(risidualsVsFitted,scaleLocation, nrow=2))
+                        },
+
+                        resid = function() {
+                          return(residuals)
+                        },
+
+                        pred = function() {
+                          return(fitted_val)
+                        },
+
+                        coef = function() {
+                          return()
+                        },
+
+                        summary = function() {
+                          return()
                         }
                       )
 )
@@ -147,5 +169,5 @@ linreg <- setRefClass(Class =  "linreg",
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
 item$print()
-item$plot()
+item$resid()
 
