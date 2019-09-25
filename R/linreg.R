@@ -104,23 +104,25 @@ linreg <- setRefClass(Class =  "linreg",
                           p_value <<- 2 * pt(-abs(tValueForEachCoefficient), df = degreeOfFreedom)
                           #print(p_value)
                         },
+
                         print = function() {
                           cat(sep = "\n")
                           cat("Call:")
                           cat(sep = "\n")
                           cat(paste("linreg(", "formula = ", formula[2], " ", formula[1], " ", formula[3], ", ", "data = ", dataName, ")", sep = "" ))
 
-                          cat(sep = "\n",sep = "\n")
+                          cat(sep = "\n")
                           cat(sep = "\n")
                           cat("Coefficients:")
 
                           cat(sep = "\n")
-                          cat("     ",row.names(reg_coef))
+                          cat("     ",rownames(reg_coef))
                           cat(sep = "\n")
-                          cat(paste("        ",reg_coef[1], "           ",reg_coef[2], "          ",reg_coef[3]))
-                          cat(reg_coef)
+                          cat(paste("        ",round(reg_coef[1], digits = 2), "           ",round(reg_coef[2], digits = 2), "          ",round(reg_coef[3], digits = 2)))
+                          #cat(reg_coef)
                         },
-                        plot = function(){
+
+                        plot = function() {
 
                           par(mfcol = c(2,2))
                           plotData <- data.frame(fittedValues = fitted_val,residuals = residuals)
@@ -144,5 +146,6 @@ linreg <- setRefClass(Class =  "linreg",
 
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
+item$print()
 item$plot()
-item$p_value
+
