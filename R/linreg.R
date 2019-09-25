@@ -142,4 +142,4 @@ linreg <- setRefClass(Class =  "linreg",
 
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
-item$plot()
+# item$plot()
