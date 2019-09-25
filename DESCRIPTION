@@ -1,6 +1,6 @@
 Package: lab04
 Type: Package
-Title: A linear regression package in R.
+Title: A linear regression package in R
 Version: 0.1.0
 Author: c(
         person("Mohammed","Bakheet",email="mohba508@student.liu.se",role=c("aut","cre")),
