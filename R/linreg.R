@@ -1,6 +1,6 @@
 library(ggplot2)
 library(png)
-library(grid)
+library(gridExtra)
 #' This function uses RC class to generate Linear Regressions
 #'
 #' @field formula formula.
@@ -135,7 +135,6 @@ linreg <- setRefClass(Class =  "linreg",
                           xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
                           ylab(expression(sqrt(abs("Standardized Residuals")))) +
                           ggtitle("Scale−Location")
-                          grid.arrange(risidualsVsFitted,scaleLocation, nrow=1)
                           return (grid.arrange(risidualsVsFitted,scaleLocation, nrow=2))
                         }
                       )
