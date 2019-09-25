@@ -1,4 +1,6 @@
-
+library(ggplot2)
+library(png)
+library(grid)
 #' This function uses RC class to generate Linear Regressions
 #'
 #' @field formula formula.
@@ -115,10 +117,30 @@ linreg <- setRefClass(Class =  "linreg",
                           cat(sep = "\n")
                           cat(paste("        ",reg_coef[1], "           ",reg_coef[2], "          ",reg_coef[3]))
                           cat(reg_coef)
+                        },
+                        plot = function(){
+
+                          par(mfcol = c(2,2))
+                          plotData <- data.frame(fittedValues = fitted_val,residuals = residuals)
+                          risidualsVsFitted <- ggplot(data = plotData, aes(x = fitted_val, y = residuals, fill = residuals)) +
+                          geom_bar(stat = "identity") +
+                          xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
+                          ylab("Residuals") +
+                          ggtitle("Residuals vs Fitted")
+
+                          scaleLocation <- ggplot(data = plotData,
+                          aes(x = fitted_val, y = sqrt(abs((residuals - mean(residuals)) / sqrt(residul_variance)
+                          )))) +
+                          geom_bar(stat = "identity") +
+                          xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
+                          ylab(expression(sqrt(abs("Standardized Residuals")))) +
+                          ggtitle("Scale−Location")
+                          grid.arrange(risidualsVsFitted,scaleLocation, nrow=1)
+                          return (grid.arrange(risidualsVsFitted,scaleLocation, nrow=2))
                         }
                       )
 )
 
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
-print (lm(formula = Petal.Length~Species, data = iris))
+item$plot()
