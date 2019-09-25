@@ -17,6 +17,8 @@ library(gridExtra)
 #' @return This class returns linear regression data including t-values and p-values
 #' @export
 #'
+#' @import ggplot2 png gridExtra
+#'
 #' @examples
 #'
 
@@ -142,4 +144,5 @@ linreg <- setRefClass(Class =  "linreg",
 
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
-# item$plot()
+item$plot()
+item$p_value
