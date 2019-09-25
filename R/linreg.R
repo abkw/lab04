@@ -168,6 +168,6 @@ linreg <- setRefClass(Class =  "linreg",
 
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
-item$print()
-item$resid()
+item2 <- linreg(formula = Petal.Length~Species, data = iris)
+item2$print()
 
