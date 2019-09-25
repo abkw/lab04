@@ -1,4 +1,3 @@
-
 #' This function uses RC class to generate Linear Regressions
 #'
 #' @field formula formula.

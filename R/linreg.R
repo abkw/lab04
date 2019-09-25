@@ -134,7 +134,7 @@ linreg <- setRefClass(Class =  "linreg",
                           geom_bar(stat = "identity") +
                           xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
                           ylab(expression(sqrt(abs("Standardized Residuals")))) +
-                          ggtitle("Scale−Location")
+                          ggtitle("Scale-Location")
                           return (grid.arrange(risidualsVsFitted,scaleLocation, nrow=2))
                         }
                       )
