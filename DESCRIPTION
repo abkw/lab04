@@ -18,5 +18,7 @@ Imports:
     gridExtra,
     png
 Suggests:
-    testthat
-
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
