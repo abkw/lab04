@@ -163,7 +163,16 @@ linreg <- setRefClass(Class =  "linreg",
                         },
 
                         summary = function() {
-                          return()
+                        cat (sep = "\n")
+                        cat ("Coefficients:\n")
+                        cat (paste("              Estimate ", "Std. Error ", "t value ", "Pr(>|t|)"))
+                        cat ("\n")
+                        cat (rownames(reg_coef)[1])
+                        cat (reg_coef[1])
+cat (residul_variance)
+                        },
+                        lmtest = function(){
+                          return(lm(formula,data))
                         }
                       )
 )
@@ -171,5 +180,4 @@ linreg <- setRefClass(Class =  "linreg",
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
 item2 <- linreg(formula = Petal.Length~Species, data = iris)
-item2$coef()
-
+item2$summary()
