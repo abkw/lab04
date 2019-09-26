@@ -120,7 +120,6 @@ linreg <- setRefClass(Class =  "linreg",
                           cat("     ",rownames(reg_coef))
                           cat(sep = "\n")
                           cat(paste("        ",round(reg_coef[1], digits = 2), "           ",round(reg_coef[2], digits = 2), "          ",round(reg_coef[3], digits = 2)))
-                          #cat(reg_coef)
                         },
 
                         plot = function() {
@@ -161,23 +160,19 @@ linreg <- setRefClass(Class =  "linreg",
                         names(coefVector) <<- rownames(reg_coef)
                         return(coefVector)
                         },
+                        lmtest = function(formula,data){
+                          return (lm(formula,data))
+                        },
 
                         summary = function() {
-                        cat (sep = "\n")
                         cat ("Coefficients:\n")
-                        cat (paste("              Estimate ", "Std. Error ", "t value ", "Pr(>|t|)"))
-                        cat ("\n")
-                        cat (rownames(reg_coef)[1])
-                        cat (reg_coef[1])
-cat (residul_variance)
-                        },
-                        lmtest = function(){
-                          return(lm(formula,data))
+                        cat (paste("              Estimate ", "  Std. Error   ", "  t value ", "  Pr(>|t|)"))
+
+                        cat ("\n"); cat ("   ")
+                        for (i in 1:nrow(reg_coef)){
+                        cat (paste(rownames(reg_coef)[i], reg_coef[i], sqrt(diag(variance_reg_coef))[i],t_value[i],p_value[i], "***","\n"))
+                        }
+                        cat(paste("\nResidual standard error: ", sqrt(residul_variance), " on ",degree_of_freedom ," degrees of freedom",sep = ""))
                         }
                       )
 )
-
-data("iris")
-item <- linreg$new(formula = Petal.Length~Species, data = iris)
-item2 <- linreg(formula = Petal.Length~Species, data = iris)
-item2$summary()
