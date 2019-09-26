@@ -37,5 +37,8 @@ This function uses RC class to generate Linear Regressions
 
 
 \examples{
-
+\dontrun{
+data("iris")
+item <- linreg(formula = Petal.Length~Species, data = iris)
+}
 }

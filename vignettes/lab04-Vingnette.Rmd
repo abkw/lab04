@@ -52,19 +52,33 @@ fitted_val
   : the fitted mean values.
   
 degree_of_freedom
-  : test
+  : the number of values in the final calculation of a statistic that are free to vary. The number of independent ways by which a dynamic system can move, without violating any constraint imposed on it
   
 residul_variance
-  : test
+  : In general, the variance of any residual; in particular, the variance σ2 (y - Y) of the difference between any variate y and its regression function Y. See mean-square error.
   
 variance_reg_coef
-  : test
+  : The Regression Coefficient is the constant 'b' in the regression equation that tells about the change in the value of dependent variable corresponding to the unit change in the independent variable.
   
 t_value
-  : test
+  : The t-value measures the size of the difference relative to the variation in your sample data. Put another way, T is simply the calculated difference represented in units of standard error. The greater the magnitude of T, the greater the evidence against the null hypothesis.
   
 p_value
-  : test
+  : In statistical hypothesis testing, the p-value or probability value is, for a given statistical model, the probability that, when the null hypothesis is true, the statistical summary would be equal to, or more extreme than, the actual observed results.
+  
+# Methods
+
+plot()
+  : Plot Residuals vs Fitted & Scale−Location scatter plot
+  
+resid()
+  : Return the vector of residuals e.
+
+pred()
+  : Return the predicted values yˆ.
+  
+coef()
+  : Return the coefficients as a named vector.
 
 # References
 
