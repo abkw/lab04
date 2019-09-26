@@ -35,7 +35,8 @@ linreg <- setRefClass(Class =  "linreg",
                         residul_variance = "numeric",
                         variance_reg_coef = "matrix",
                         t_value = "matrix",
-                        p_value = "matrix"
+                        p_value = "matrix",
+                        coefVector = "vector"
                       ),
 
                       methods = list(
@@ -62,7 +63,7 @@ linreg <- setRefClass(Class =  "linreg",
                           regressionsCoefficients <- solve(t(X) %*% X) %*%  (t(X) %*% y)
                           #print(regressionsCoefficients)
                           reg_coef <<- regressionsCoefficients
-
+                          coefVector <<- as.vector(reg_coef)
                           # Fitted Values
 
                           fittedValue <- X %*% regressionsCoefficients
@@ -157,7 +158,8 @@ linreg <- setRefClass(Class =  "linreg",
                         },
 
                         coef = function() {
-                          return()
+                        names(coefVector) <<- rownames(reg_coef)
+                        return(coefVector)
                         },
 
                         summary = function() {
@@ -169,5 +171,5 @@ linreg <- setRefClass(Class =  "linreg",
 data("iris")
 item <- linreg$new(formula = Petal.Length~Species, data = iris)
 item2 <- linreg(formula = Petal.Length~Species, data = iris)
-item2$print()
+item2$coef()
 
