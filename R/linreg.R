@@ -45,12 +45,6 @@ linreg <- setRefClass(Class =  "linreg",
 
                       methods = list(
 
-                        # initialize11 = function(formula, data) {
-                        #   formula <<- formula
-                        #   data <<- data
-                        #   dataName <- deparse(substitute(data))
-                        # },
-
                         initialize = function(formula = as.formula, data = as.data.frame) {
                           formula <<- formula
                           data <<- data
@@ -65,49 +59,49 @@ linreg <- setRefClass(Class =  "linreg",
                           # Regression Coefficients
 
                           regressionsCoefficients <- solve(t(X) %*% X) %*%  (t(X) %*% y)
-                          #print(regressionsCoefficients)
+
                           reg_coef <<- regressionsCoefficients
                           coefVector <<- as.vector(reg_coef)
                           # Fitted Values
 
                           fittedValue <- X %*% regressionsCoefficients
-                          #print(fittedValue)
+
                           fitted_val <<- fittedValue
 
                           # The residuals
 
                           theResiduals <- y - fittedValue
-                          #print(theResiduals)
+
                           residuals <<- theResiduals
 
                           # The Degree of Freedom
 
                           degreeOfFreedom <- nrow(X) - ncol(X)
-                          #print(degreeOfFreedom)
+
                           degree_of_freedom <<- degreeOfFreedom
 
                           # The Residual Variance
 
                           residualVariance <- as.numeric((t(theResiduals) %*% theResiduals) / degreeOfFreedom)
-                          #print(residualVariance)
+
                           residul_variance <<- residualVariance
 
 
                           # The Variance Of The Regression Coefficients
 
                           varianceOfRegressionCoefficients <- c(residualVariance) * solve(t(X) %*% X)
-                          #print(varianceOfRegressionCoefficients)
+
                           variance_reg_coef <<- varianceOfRegressionCoefficients
 
                           # The t-values For Each Coefficient
 
                           tValueForEachCoefficient <- regressionsCoefficients / sqrt(diag(varianceOfRegressionCoefficients))
-                          #print(tValueForEachCoefficient)
+
                           t_value <<- tValueForEachCoefficient
 
                           # p-values
                           p_value <<- 2 * pt(-abs(tValueForEachCoefficient), df = degreeOfFreedom)
-                          #print(p_value)
+
                           ?pt
                         },
 
@@ -126,12 +120,7 @@ linreg <- setRefClass(Class =  "linreg",
                           colnames(coef_matrix) <- rownames(reg_coef)
                           rownames(coef_matrix) <- c("")
                           print.default(coef_matrix)
-
-                          #cat(sep = "\n")
-                          #cat("     ",rownames(reg_coef))
-                          #cat(sep = "\n")
-                          #cat(paste("        ",round(reg_coef[1], digits = 2), "           ",round(reg_coef[2], digits = 2), "          ",round(reg_coef[3], digits = 2)))
-                        },
+                          },
 
                         plot = function() {
 
@@ -177,14 +166,6 @@ linreg <- setRefClass(Class =  "linreg",
 
                         summary = function() {
                         cat ("Coefficients:\n")
-
-                        # coef_mat <- matrix(round(reg_coef, digits = 5))
-                        # std_error_vect <- c(round(sqrt(diag(variance_reg_coef)), digits = 5))
-                        # tvalue_vect <- c(t_value[,1])
-                        # pvalue_vect <- c(p_value[,1])
-                        # new_mat <- cbind(coef_mat, std_error_vect, tvalue_vect, pvalue_vect)
-                        # colnames(new_mat) <- c("Estimate", "Std. Error", "t value", "Pr(>|t|)")
-                        # print.default(new_mat)
 
                         cat (paste("              Estimate ", "  Std. Error   ", "  t value ", "  Pr(>|t|)"))
 

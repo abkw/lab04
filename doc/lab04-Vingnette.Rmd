@@ -1,0 +1,81 @@
+---
+title: "linreg"
+author: "Chathuranga Silva & Mohammed Bakheet"
+date: "24th September 2019"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{linreg}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lab04)
+```
+
+# Fitting Linear Models
+
+``` linreg ``` is used to fit linear models. It can be used to carry out regression, variance and analysis of covariance.
+
+# Usage
+
+```c
+ linreg(formula, data)
+```
+
+# Arguments
+
+formula
+  : an object of class ``` formula ``` (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under ‘Details’.
+  
+data
+  : a vector specifying a subset of observations to be used in the fitting process.
+
+# Value
+
+An object of class ``` linreg ``` is a list containing at least the following components:
+
+reg_coef
+  : a named vector of coefficients
+  
+residuals
+  : the residuals, that is response minus fitted values.
+  
+fitted_val
+  : the fitted mean values.
+  
+degree_of_freedom
+  : test
+  
+residul_variance
+  : test
+  
+variance_reg_coef
+  : test
+  
+t_value
+  : test
+  
+p_value
+  : test
+
+# References
+
+R packages by Hadley Wickham 
+
+# Examples
+
+```
+item <- linreg(formula = Petal.Length~Species, data = iris)
+item$print()
+item$summary()
+
+```
+
