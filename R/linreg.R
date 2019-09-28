@@ -2,8 +2,8 @@ library(ggplot2)
 library(png)
 library(gridExtra)
 library(methods)
-#' This function uses RC class to generate Linear Regressions
-#'
+#' This function uses RC class to generate Linear Regressions, including regression coefficients, fitted values, residuals, degree of freedom,
+#' residuals variance, variance of regression coefficients, t values, and p values
 #' @field formula formula.
 #' @field data data.frame.
 #' @field reg_coef matrix.
@@ -128,7 +128,6 @@ linreg <- setRefClass(Class =  "linreg",
                           plotData <- data.frame(fittedValues = fitted_val,residuals = residuals)
 
                           risidualsVsFitted <- ggplot(data = plotData, aes(x = fitted_val, y = residuals)) +
-                          #geom_bar(stat = "identity") +
                           geom_point(colour = "black", fill = "white") +
                           xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
                           ylab("Residuals") +
@@ -138,7 +137,6 @@ linreg <- setRefClass(Class =  "linreg",
                           scaleLocation <- ggplot(data = plotData,
                           aes(x = fitted_val, y = sqrt(abs((residuals - mean(residuals)) / sqrt(residul_variance)
                           )))) +
-                          #geom_bar(stat = "identity") +
                           geom_point() +
                           xlab("Fitted Values\n lm(Petal.Length ~ Species)") +
                           ylab(expression(sqrt(abs("Standardized Residuals")))) +

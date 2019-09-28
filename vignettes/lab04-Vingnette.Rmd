@@ -1,6 +1,6 @@
 ---
 title: "linreg"
-author: "Chathuranga Silva & Mohammed Bakheet"
+author: "Chathuranga Silva, Mohammed Bakheet, and Nikodimos Gezahegn"
 date: "24th September 2019"
 output: rmarkdown::html_vignette
 vignette: >
@@ -68,17 +68,23 @@ p_value
   
 # Methods
 
+print()
+  :prints out the coefficients and coefficient names, similar as done by the lm class
+  
 plot()
-  : Plot Residuals vs Fitted & Scale−Location scatter plot
+  : Plots Residuals vs Fitted & Scale−Location scatter plot
   
 resid()
-  : Return the vector of residuals e.
+  : Returns the vector of residuals e.
 
 pred()
-  : Return the predicted values yˆ.
+  : Returns the predicted values yˆ.
   
 coef()
-  : Return the coefficients as a named vector.
+  : Returns the coefficients as a named vector.
+
+summary()
+  : Returns the coefficients with their standard error, t-value and p-value as well as the estimate of. and the degrees of freedom in the model.
 
 # References
 

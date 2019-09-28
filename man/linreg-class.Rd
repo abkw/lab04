@@ -4,12 +4,14 @@
 \name{linreg-class}
 \alias{linreg-class}
 \alias{linreg}
-\title{This function uses RC class to generate Linear Regressions}
+\title{This function uses RC class to generate Linear Regressions, including regression coefficients, fitted values, residuals, degree of freedom,
+residuals variance, variance of regression coefficients, t values, and p values}
 \value{
 This class returns linear regression data including t-values and p-values
 }
 \description{
-This function uses RC class to generate Linear Regressions
+This function uses RC class to generate Linear Regressions, including regression coefficients, fitted values, residuals, degree of freedom,
+residuals variance, variance of regression coefficients, t values, and p values
 }
 \section{Fields}{
 
