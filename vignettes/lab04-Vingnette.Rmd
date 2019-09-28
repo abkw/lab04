@@ -1,0 +1,101 @@
+---
+title: "linreg"
+author: "Chathuranga Silva, Mohammed Bakheet, and Nikodimos Gezahegn"
+date: "24th September 2019"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{linreg}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lab04)
+```
+
+# Fitting Linear Models
+
+``` linreg ``` is used to fit linear models. It can be used to carry out regression, variance and analysis of covariance.
+
+# Usage
+
+```c
+ linreg(formula, data)
+```
+
+# Arguments
+
+formula
+  : an object of class ``` formula ``` (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under ‘Details’.
+  
+data
+  : a vector specifying a subset of observations to be used in the fitting process.
+
+# Value
+
+An object of class ``` linreg ``` is a list containing at least the following components:
+
+reg_coef
+  : a named vector of coefficients
+  
+residuals
+  : the residuals, that is response minus fitted values.
+  
+fitted_val
+  : the fitted mean values.
+  
+degree_of_freedom
+  : the number of values in the final calculation of a statistic that are free to vary. The number of independent ways by which a dynamic system can move, without violating any constraint imposed on it
+  
+residul_variance
+  : In general, the variance of any residual; in particular, the variance σ2 (y - Y) of the difference between any variate y and its regression function Y. See mean-square error.
+  
+variance_reg_coef
+  : The Regression Coefficient is the constant 'b' in the regression equation that tells about the change in the value of dependent variable corresponding to the unit change in the independent variable.
+  
+t_value
+  : The t-value measures the size of the difference relative to the variation in your sample data. Put another way, T is simply the calculated difference represented in units of standard error. The greater the magnitude of T, the greater the evidence against the null hypothesis.
+  
+p_value
+  : In statistical hypothesis testing, the p-value or probability value is, for a given statistical model, the probability that, when the null hypothesis is true, the statistical summary would be equal to, or more extreme than, the actual observed results.
+  
+# Methods
+
+print()
+  :prints out the coefficients and coefficient names, similar as done by the lm class
+  
+plot()
+  : Plots Residuals vs Fitted & Scale−Location scatter plot
+  
+resid()
+  : Returns the vector of residuals e.
+
+pred()
+  : Returns the predicted values yˆ.
+  
+coef()
+  : Returns the coefficients as a named vector.
+
+summary()
+  : Returns the coefficients with their standard error, t-value and p-value as well as the estimate of. and the degrees of freedom in the model.
+
+# References
+
+R packages by Hadley Wickham 
+
+# Examples
+
+```
+item <- linreg(formula = Petal.Length~Species, data = iris)
+item$print()
+item$summary()
+
+```
+
