@@ -11,7 +11,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Chathuranga Silva &amp; Mohammed Bakheet" />
+<meta name="author" content="Chathuranga Silva, Mohammed Bakheet, and Nikodimos Gezahegn" />
 
 
 <title>linreg</title>
@@ -20,9 +20,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -32,16 +32,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -50,9 +48,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -304,19 +302,19 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">linreg</h1>
-<h4 class="author">Chathuranga Silva &amp; Mohammed Bakheet</h4>
+<h4 class="author">Chathuranga Silva, Mohammed Bakheet, and Nikodimos Gezahegn</h4>
 <h4 class="date">24th September 2019</h4>
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(lab04)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(lab04)</a></code></pre></div>
 <div id="fitting-linear-models" class="section level1">
 <h1>Fitting Linear Models</h1>
 <p><code>linreg</code> is used to fit linear models. It can be used to carry out regression, variance and analysis of covariance.</p>
 </div>
 <div id="usage" class="section level1">
 <h1>Usage</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a> linreg(formula, data)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" data-line-number="1"> linreg(formula, data)</a></code></pre></div>
 </div>
 <div id="arguments" class="section level1">
 <h1>Arguments</h1>
@@ -325,7 +323,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <dd>an object of class <code>formula</code> (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under ‘Details’.
 </dd>
 <dt>data</dt>
-<dd>a vector specifying a subset of observations to be used in the fitting process.
+<dd>a data frame specifying a subset of observations to be used in the fitting process.
 </dd>
 </dl>
 </div>
@@ -343,21 +341,372 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <dd>the fitted mean values.
 </dd>
 <dt>degree_of_freedom</dt>
-<dd>test
+<dd>the number of values in the final calculation of a statistic that are free to vary. The number of independent ways by which a dynamic system can move, without violating any constraint imposed on it
 </dd>
 <dt>residul_variance</dt>
-<dd>test
+<dd>In general, the variance of any residual; in particular, the variance σ2 (y - Y) of the difference between any variate y and its regression function Y. See mean-square error.
 </dd>
 <dt>variance_reg_coef</dt>
-<dd>test
+<dd>The Regression Coefficient is the constant ‘b’ in the regression equation that tells about the change in the value of dependent variable corresponding to the unit change in the independent variable.
 </dd>
 <dt>t_value</dt>
-<dd>test
+<dd>The t-value measures the size of the difference relative to the variation in your sample data. Put another way, T is simply the calculated difference represented in units of standard error. The greater the magnitude of T, the greater the evidence against the null hypothesis.
 </dd>
 <dt>p_value</dt>
-<dd>test
+<dd>In statistical hypothesis testing, the p-value or probability value is, for a given statistical model, the probability that, when the null hypothesis is true, the statistical summary would be equal to, or more extreme than, the actual observed results.
 </dd>
 </dl>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p><strong>print()</strong> :prints out the coefficients and coefficient names, similar as done by the lm class</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">item &lt;-<span class="st"> </span>linreg<span class="op">$</span><span class="kw">new</span>(<span class="dt">formula =</span> Petal.Length<span class="op">~</span>Species, <span class="dt">data =</span> iris)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">item &lt;-<span class="st"> </span><span class="kw">linreg</span>(<span class="dt">formula =</span> Petal.Length<span class="op">~</span>Species, <span class="dt">data =</span> iris)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">item<span class="op">$</span><span class="kw">print</span>()</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; linreg(formula = Petal.Length ~ Species, data = iris)</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  (Intercept) Speciesversicolor Speciesvirginica</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;         1.46               2.8             4.09</span></a></code></pre></div>
+<dl>
+<dt>plot()</dt>
+<dd>Plots Residuals vs Fitted &amp; Scale−Location scatter plot
+</dd>
+</dl>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">item<span class="op">$</span><span class="kw">plot</span>()</a></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAADAFBMVEUAAAABAQECAgIDAwMEBAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJycoKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1eXl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29wcHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////isF19AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAgAElEQVR4nO2dCXwO1/rHJ/I2CwkhQZQq2ouqKqKEq0hRXFKp5dYlf6VqiVa5dNFet9yrNJbbampfqkW1t7WXWmrfl6gt1iauKkWDRPZ3y/Ofc87s7zmZGe/7Ji/J7/PJmzlzlufM9505M/PMeefhoExFiivpDvi6ygDpqAyQjsoA6agMkI7KAOnIq4C+5JD86w29rleybQ/6+qb9DJqazQlKwckJIeKHUUsseRnQsJkzZ/6rO9e4gJofUkdc8gCgUTOxbuNWHxhA2/H/UdxWan7zjuKSBwAdVrb6gAFax83hP3/uVjWiz0V+IX3E48GN5vEL0XH8x+fNKrbbibr95AhU1pLIfyQ9XT684wEggKTiSH1C0M64jVumXq0ExLfalj/WZuIPhVnZkhkVC6CF3HqA3QFRn06uUSWV/xIrjvykPbeKAPqA6/jpkKBwFaB5XN8F7z5e8S4BJBVH+obbwn+OCM5Sr9YAuvBacPJN/KEwK1syo2IAlL+vbjMbQLPn7ADXK8fDNe4TAPtTY/GmXA96uRBgGqcCFBPNL+xDlXlAcnGkrMA3AJyRr2hW84DGzEL6hWCXDzHJrMKSGRXDWYzjmmfwfeS+QKsG1oSbXOc/SD6/KV9zR/iF3GAVoKw8fmEVtxEDkotjxdYG2M9t0K4Wz2KrNIBkswpLZlQMZ7GpL3OjAfYIW/AIwDguoMu0y4A35d9cDirZSD0GnVkw7BlOACQXF9o8CX+vYtOuVh9iMiDZrMKSGRXLGNQ3MB+OcJ8nY/Hpo+Oa+Fnm4U2ZymWjEs+IgOx+PKCpfpFDl20SAUnFse5aJkMdjFK1mgVINquwZEbFAugT7lf4g/scLZ4+DtlX+FHhUpOQQrQpK/GOX1ABARrOL6VyiZDh/7YT4IQASC5O1LnlcW4vaFezAMlmFZbMqFgAzeH4/ab1U1b+lF1pNGzEp563yjvQptwI7s1vYhIaOhvH8KvH84COcqsBnXR+wIDk4kTz/V6rzVfRrNYCqgDCh2RWYcmMigXQWm4tPxoENE9Kalj1CmRUj5yxaEjAYLIp/+C6zH6jfGO+2wncqO9HPVUjEbLDn0r6Jr52ue7nESC5ONHNcn7j+X+a1RpAk7hFF8mHZFZhyYyKBVAa15z/PNY5vHrvC/zCiW5VgxtMyhcvFJuGPr/tk/cB7g2OiOx7a+BKgIOtKzQYdW9W8x/wGCQVF9SOOwOgXa0BdKZV0FzyIZuVLZlR2d28jsoA6agMkI7KAOmoDJCOygDpqAyQjpSADqbBppf/ZSuxvvikFIA+4VblRcTWfbfkOuOLUgCqnQhfPlG49vES64tPSgEo+BgMGAkng0quM74oBaCm710J2Q+f1Su5zviiFIA2BPi1ghl+M0quMyWtlRy3ZI9mnfIsdnV7DuzeZqipdFn5d9PpstoYGXfyGRkZkMnIyb/DMmI1bySDkbMCO2dPksQ9DaBkWaUWUDwGNIcktIA4WaUW0BC8+UtIQgvIIcsIoAJZDmsBXU4nI8PqYGWAjZHjQSM2YLX1BZ5qcY0kRE+cy/5yypBLUvnlPjR7UBu8B00hCe0exOtkywhegXFqFI6huWThxMiBc6W9S9n3hwZQdQyoF0lQALVrt6LaF4tqpqr4bH4nlgDK63/JOnH9Qw3oUQxoEElQAIXsgkEbYGEfFaDTh+MIoH2TAH5G92n3pkyZsiNflqMgny6Hk5FR4GBkWMHKaotlxKk0cu+WW0ZiMaB5QsoVUMUdkPQOpEZohpveBNDaeQDXX+MXbsfHx39rl+V02OkqLGRk2J2M9Q5gtcWqoTSSNZDj2px3w8gsDOg0SVhdAXWOSdvzZMHy6gxA8wGuSQ+nlHu/rxxiI9DmPW3ACOsQIxMgjpAE5RC70HyarXUFbiId0N5/88P4O74MqDbevp/1jbAA9cENJJEEBRBAIeRu1N6LEEAX83LjrxUmrvNlQKF4+07oG2EBaoUbmEQSFECZRNk0QHHn4Pibw+dIp3mbLKfdRpezkJFhczLW24HZFiujUDYSTGa5im2ZN9IJN/ApSYjTThWAhDuNaO0uRJPyy/WVPcjf3UNsHJmCRRK0MYjXiUVNz6pIyJeHY2NjY+f7MiA/vH0r9I2wAA3HDewhCeoYhLT1BWVKcXnYP8tm015JH6xbztL5D1bfSwTQbn0jLEBVcAN/IQkmoJRQZUq6PISceGFVxnvvvfejcHsXhlrs5rH7SPduVskIsU7PCPtm9RHcwLMkQblQTEHa95enlICky0P4Jf6tfh/e4BfuJCQkrCUD2THcYhBrYPXkIM1qSjFIc8ox9n6MkFG+I0kwB+lqqknx8uXhlRXZucukR0JkN1xN5key9v5iPsRI/9/RN8I6xEJwA11IgnKI5WCpDzj58tBqA7gr3aeRRm7hw74Gq+8lAmiOvpGiATHGoO2SjioBiZeHF/N2jr6X/99JakAXcYv+rL6XCKBF+kZYgAJwA1EkoQUUwqsc51eOq9BftQsJl4dx5wq/io9PvCuuJgPZ+6RP+uOnWl4dpLvqGWEP0hbcQGOSoAzSG+puKbBu/9M6FSD5OojiMJtC+sT6cktkD5qpb4S1B5XDDTxJEpQx6Nm16HNjEyUf+TqI5jDr4IOAxuobYQEiF1J1SIICqOJe9HkgTAlIvg6Sl2RAL/ggoE36RliASAMVSIICqOOLWQDZ3V5UApKvg2gOs1qkSX1flkbecZiRzmy5fyOkgRCSoDjMLkRW7tKlSo1LKkDSdZC0pHC5NiRNstykxexyJZ357P6NkEPscSHlCghyFowZtzhXyUdxHURzmDXwwUMsSd8I6xATbjVIwuUQm394vyAlIPk6iOYw6+aDgD7VN8ICVKHIK2luvEWQaheSroPUDjPSyAQfBLRc30jRV9IvkIQLoCsZYELkho7ci/mxbjCL2aNIAA0T2zJvpCJuoCdJUG5WqZM4i3SYHcUtWlhfbonsQW44zMge9CJJUE7ztEmcRTvM9uMWg1h9LxFA/9E3UvSVdAOSoACiTeKkOMwUgE7gFiuy+l4iHsXj+kaKvlAUvm8KINokTorD7FZMTMyCQqxL5MKhkC4ARgZb91FDrlIe9yb1/o0IgEjC5gpIO4lzS0LCzxSHWVZSUtKBPKzcP6EWE/LocjgZGfl2RkYBFDBy7PksIw5pkQwhp+/fCNkFawspV0C0SZxFO8zSd9XnuB5XWXt/MR9iAiB9I6xDjDw3Yt/N0yZxFu0wS0+/lXzBZx77BOLtO6BvhAWI+IOeJgkaoIwNn8BZuwoQy2F2V1ZB5l26bDZGRoaVkXEPshg5RoyQHeCkkMosYNTIYhohHsUWYjEXQJcia3HQs8H/wICM3EcW980qOUuvun8jNXAD8ULKFVD3vzktkN71ZTWKB2cKHnnud0XfCOsQexk3sIwkKIdY6BHg78P2VFbxeYCm4NVBmyc9QbgPQBnV+AY6CQkKoFp7EKAdj6kAuU7B81lAxFvhhkfx9rN8/SFCggJoWIcMC5x5ZqRmuNFOwbsRFRWVBD4oMsYa+qEAXVNxA0dIQjxZKecHdXiEq8z1kjxm6EIRXKfg5a5evfpMtixbbjZddgcjI8fGyMiFPEaOLUffSDTavBBdI3nA6nBfDOhzsS8ugAAOL12jcrhiPTBT8H6ty/P50YAR1iE2lpwGSYI5u4MO6EGYgrcIn6QNGGEBSkUPIVrfJAkXQMc+XvgbWM+unRdFA6T1KGbIKriXQZfNzsjItDIysiCbkcM2YpMWo/AO8KuQusc2ksXIsV4Y+9fEG0IiWwPov+XKV66xjz/PhbbU3adAnOiAZcvNocvhYGTk2hkZeZDHyLEbMFITA/rZQ0a0N6tN+lphmn/c70bo+Ogh1gPxqXFT3wjrEFMZ0R5iQVsA7nE7DPIBxdifzzrB7N3JyMgpYGRc/+4aI4dpZPduafEc+r3XWslIPqPGte+uGzGivdXA7yeSX1LkCY1LMFvjfNQps1XGjDJb40zUWf1CssoA6agMkI4kQNFdu3bFH13NWmTp4nmzNXKPaKf56xu5YLZG9pEc/UKyREDxssxafLhV9nocHZUB0pH3AG0fOmDiTVM1vn11wNQs/WJqHRturrzqCboBeQ3Q9d6/W5d8YKbG6cHpBVOXmDRza/AwcxVUT9ANyGuAjs8F+G2gmRpXT4Nz6VJzVuzv/mQOUI7Zc5A3xyD7jAXmKuyIG5GvX0qpeRt/NQdIeoJuVF4EdGDEl06TVe7OnmWq/N7pYBKQ+icnBuQ1QIVJ7+uGG1Fr+26AtKGmqiS+MqDfSwMyTdRQP0E3IK8BOjLW7nSa2oP2jswtXDrdrB2Te5D6CboBeQ3QUv50GjvATI3CJQNfTTSzN2CZBKR+gm5AZReKOioDpKMyQDoqA6SjMkA6KgOkozJAOippQHFk7u1HzAIhOPLEYv9b6N85HDwLyeHONA4zKnFAMYeRrl3h5kPbmYD/VCKAMgJwEJ8pVcTpy6UHkHBflDH+cFGAoGcH9NnidXF1qQMElv0tOK4r+oPM4bUrxv4CcLFzpaYbBEDflrsBcJXbBhe6hIW2P4UA5aCImBe4TKn8D82C65jzBhhQiQN6Ab0+9jwCJO1BHdrvPtKvRkZOZOc9a+qUI4ByQ2YDJEXYIarD9p3tWqoACeWvBrx7NJE75OEOljggPEZHKwEdfoS/mXTU2rCgchbAZiE8EAx4HiBmGBROSwNYEaEEJJb/ye8KwKo0D3ewxAHJh5gIaCmHfvfIfTKmC7+6wE8AtMnv+m3/HQC2vZ8PqqYCJJbPbhkS/1Uey9D9ygcBralC1oxDgKzCIQa28M++qOaA3NZPvr1+iQzoBJcplgfYl/BExI8e7qAPArqIwmOl9zy7ODwbYId4iMGINrEJABsrFAAsEgDt4y+QuEyx/O4ZAIWxL7Ms3ad8CVC7hAz816vJzr1d69tza3Q7uKl+BRHQHr+AXSio49dpi2oFnkKn+ardU7Y35Qdpofy2ckmn1tUz4y00Il8CtCS8F/7LTahVqedlgEudKz2ztr/4up7CWtWRB3di9fA+qXE9EKAtDUJjzkZnS+Wn1w187G1Px00paUA+rzJAOioDpCMB0G9vlmw3fFcCoOPNAeYlSppbsp3yJSkATX9PkvaW2pRcbrStzdMBvYrYr/ab9NktYo3G4/Vbt+xn5Sx/LjSym5lbsX19DRRSAMLyQIwxF0AfDwXo0+7w4X2zQobIaxWODaOAUBUmoDkB047tGhx4klUZeZw0itpKK6iWBpAnYoxpAdki+SvdPjjYwgTF+788Dagh7nQ75qxX5HHSaFnHou0haQB5IsYY2tygzd2qx1wb3bDabIA1rUAENDPQKXpvsOdHdu7gmiIg0cFjOdS37hPf86eQ2LBm60NScBXL6u6V6n1HMRuG0Zw4AMkR+6PDY87Jzdz6a0TkW1aEVuM5soZepjRUJCBPxBjDgDpm3m1Ufn3hTEsOjBgiAHIcfbyz5O3Bu4Ps3FEBEotY2qc5PgzKt9ePPbQq0i+F7EG1VqUMDLa6mo239NuC7+WTA9tcyRsfkSU242zS7eCyqhMQIK3nqNlCs4A8EWMMA+K/43EtAW5wqRCViABhv8+zaZK3B22twrmjBCQVscxBXsTUVWH8XetSTgA0FeAydwUX/LFyr1twSLhZK5jciAt8YTkPCHn2nfVmi81sDMkAmD+QB+TiOXpFf7aNBpAnYoxhQLv5AacHv5fzgGqi4OhokD6cWgiStwdvrezcUQKSilh2AtzmUichf/QvIqCfAG4KgPrvTaixedg3kuXry3oHjeEB3eGX+44Um0lsRXIt+108RxNizQIyE2PMMKA1II5BvCTvDb+1CucOXiUAkoqgAZkH9A8UiD5NBLRfBsTfuc+p25xcOqR0wsfXEos1mUvnF+JGiM1M/rPYmovn6J/ddbdGCchkjDGWtIDIISYCEr03aGsVzh2cJwCSigiAVlbJBfiaAkipO9z36N/CCs5kjt9l86p9JjazqhJ/hK7szNd08Rz1e92lnaIAcbI8CWi4OEgTCd4b5PlROneW8lfvjV9FX85ZqYgAqKBOr+RNjSznsLOIBQhGh0zctmtG2Pv8IVZ7/aHY8HtiM7Ynex5bW2c0qqn1HDXXnzGtBGQyxpghQMGXYXW0CpDovUGeH4Vzp1MLHhD+cppKRTAgvoW0ThXbHLfcxlWYgOxzm1Ws0nKxkwe0qUloh7Oypas9K9cYnY9qajxHttBU13aKACTJWIwxo7JGprjXwE00iJ0pX2iweDJn9PtdEaNfRgOIHmPMTU01N3XVRTeC/nPzYjvDPzkwDqjFZv0yGkDUGGPuCt2suqWtUcE1hxie3mkY0H4j04E1gKgxxkq1NIAYMcZKsTSAGDHGSrE0gBgxxkqxXE7z1BhjpVgaQIwYY6VYGkDCnYahGGOlQ9oxiBZjrFSLequhjjFWukUFpI4xVrqlAUSLMVa6RR2kqxl4XlRapAFEXk9Vct3xPSkBMWKMlW4pAbFijJVqaR/70GKMeU7ZHzYLebTDdwzfYNN+rutGcAWuK101IcSdbhUlDSBajDHPKffpgNdmT32ee4ue7S6gkDpu9I0lrT+IEmPMc/qI/JrpDe40NdtdQM0NzEUwLQ0gWowxz6l7VfwvxfIF/7mhXWjd8egtn0lPlw/veAAEQD93qxrR56JURQFoS7uwJwbdBlrVtvy1yUyIjlOWin7zcNdKT7j94xbtvRglxpjn9JLljLT8pV/X2W9aBgHM4/ouePfxincJoN0BUZ9OrlFFcorLgL71i571QcXa2bSqF14LTr6JAcmlott3OHrzDc7dmffaWw1KjDHPaR3n/9f15BWXeTV68EP1+353IQa5DvahCfUIULPn7ADXK0svsZEA2eq0sAIc5KZQq+JDjAckl4Jof56yNeA9N/usAkSPMeZBrY/24/xbT+f3ll0culq/Out3yELP1FdxGzGg6xw6+mBgTbGGBOg09xX61+p5alURkFwKopuhpepj3OyyChAjxpgn9ce3r7cJeuwSLJYfjp5ZMOwZTgC0R3BIPQJZ/PXqDgWg9eRV4a/WolYVAcmlIBo//Yz0KCBzMcZM695H5Ar9tyq9YC53TVg71S9y6LJNAqAj3OfC7IlkHpNFAWgt2fTB1alVRUByKTJkexgQeGQSJ1OO4DfIQvSzsJXbzS/8Melchv/bTvSrJgLoD+5zVOD0cbGOBOgUtxz9a/NnalURkFzKS4A8MYmTrReDj6F/Z4IGQ0YYejg5i/vlKJqsAh9wP5BBuvVT/CCbXmm0WEUCZH0smh++D3H/oladUAEwErmUlwB5YhInW1eq+PeaODk+uNZNtIE9F/6j/CuQHf5U0jfxtct1P48B7QlonpTUsKo0yozgZsxCOgcr/J6fMxGfwClVJ3GLLmIkcinvAPLEJM4i9Me4Z0PDoz7EQ9030SFPfMBfUBxsXaHBqHuzmv9ALhSPdQ6v3lt+QesIYdT+EuDHtpXqDkqnVz3TKmguQSKVIoDafu9ml70wifPhkhcmcT5c8sIkzodLWkC0GGOlWhpAZmKMlQ5pANFjjJVmaQBRY4yVamkAUWOMlWppADFijJViaecHaWKMlcll8gI1xlgpFnV2R5lkqQAxY4yVDhUu57jFBzQrlYCMxxhThJnKymYEo8qC24ycAlYGM+BWupWVAQrzv27cccudfuEQd7XOkYQmfBYGZDzGmNKezwBaV4vjnj3nRr/Iz0aXkgQNkPEYYzZZDoeNLgcwMmxOZkYhK4eZAZL5gtpo8/q70a94DGid0BwFkPEIUcovxFf2oCN48x5zo19rUQOPXiYJ2h70YAO6SH5X7Ua/FqAGAtJI4uEDlP4S2r5ZbvSrAUb8IUlQARmOMaa05zOArr7d9Pm57vQrAgN6nSRogGgxxqRo6qqgQUp7PgMofUO/YSnu9KsSBjSGJGiAKJKiqauDBint+Qyg19Cz2O/c6Fd1DGgQSRgEJEVTl4MGHT9y5HymrNy8TLpy4R4jx8bMsDMyMpkZIJn/ncxgdqNfLXELi0lCnOqrey8mxMKWgwZ1iooyHd2xOLQRb56/Gy2cRxHr6wsJTTh1XUBy0KDfr11LvysrJ/cuXTmQwcixsjJsNkbGXWYGSObPYUAV3OjX5Uf5BnrcIQnxXVlGAamDBikPaV8Zg25gQPXd6Ndo3MIWkqCNQdSJ5EI0dXXQIKU9XwF0kIxBbvSrO25BuFKgAaJOJBeiqauDBint+QqgS2TmlRv9aqh3swqGJ5Ir7fkKoBV48/zc6FcF3MLLJMEAZHAiudKerwD61m1A5XEL3UiCAcjgRPLbsrKyb9OVDXcYOVZmho2RcdvKyoAccek3cpp3o18VSYgPoT4dkMGJ5AWybPYCumzAyChwMjPYOawMkMz/SPYgA/2yMnKCcQt/IQlNvHmTE8mVe6yvHGJL3T7EQnELfUiCdathbCK50p6vALpKDjE3+kXGoESSYAEyNv1FbvSWzwDa6PYe5IdbqEUSDEAGp78ILV57vVJIz1TTHfEOoIVuAyKzIauTBAOQy/QXyR90YuTAuVp3R3/UYGPTHfEOoCtuXyhacAuTSYIBSDv9RfIH5fW/ZJ24XgOItHjJbEe8AyiZ7ACS+fvdgyJJggFIO/1F8gft4+/DfsZ384uSktbmEZEWt+VRZYV8ekaeg7E+z+Fk5rAywCYuDSG9kcxbGTXY/SINWMSWqYBcp78Id/Nr5wFcfw0t/d9LL/1TeJlgOdzi/xxUOYG+3uEoZGawc1gZ4BSXviHbJ5l30isU0S/SwNMkYaUDcp3+IgKaD3BtsOYQq6w6sRrelb1ziN10e5COxi2cIQmmy1U7/UUAtPffACff0QAijwFOme2IdwDNcnsMCsQNdCEJBqBJ+NcmOT00gC7m5cZfK0xcpwH0J9zir2Y74h1Ab7oNiIwYjUiCAYgLRK+gzuQ0gOLOwfE3h8/RnuYnogZfMt0RbzrM3AFU1cBpnvsybHC+ChBVQovPoQYrm+6Ilx77uH0dtEE5iLEA3U59ptllo4DId/az2Y54B9ASt/cgcjc/lCSYgCD3b1VW6gHKIiJd+j6LqnzIpmdk2ZkZDkZGlp2VAfniUlvSGzGZl0+vUES/yL1YTZJgPBfj0E/yP31ED1A2EenS3Gyq8iGHnpFtZ2Y4GBnZzAwoEJd6k95I5gvoFYrolz9uoC1JiFc6GkC78Y383rd1AAn7ZDnVTm14V/bOIXbN7UPsNdzAeZKgHmKGfzcvtBjgS4DIZUwnyfx9uGGC+AZeEBJUQIZ/Ny80Qr6zvaY74hVAZ3BnyknmzQMiL0RfRxJUQK6/m5edHLTpLwTQq2Y74h1Ak71/oej6ZFXh5KBNfyFdGma2I94BNMptQOQsVpckjD1ZlZ0c8vQXF0DLzXbEO4C2uA2oGm5AmMRn7Mmq7OSQp78kxMd/bCci50U7XQ5gZNgLmRnsHFYGOKVFfMpoKpl3UssX1a8s5ABsJCQY7g7Nk1XZySFPf/l0ypSv84luIUIb8umyQQEjx8FYn+9wsnKYGWCTFn971M+/g2zeRiuu06+vxx6XW6YC0jxZlZ0c1OkvddF3ZjG9K3vpNI8GIf89kvn7OM3f+nv3pWKCcYhpnqyKTg7G9Bdy1F823REvzg8KksybB/QrGqXDhAQDkPbJquDkYEx/IYCamO2IdwB97PYgTa57R5OER56ski7NNtsRbz56dv+pRjBJ0AGl9aAEzdEDtNhsR7wDaEdxALJGfGEekI8cYuTRszsOM3KIjSMJ1nVQ/ZnbDNysqh4k3TL7/Mk7z8VygvB1kGTe/HOxTDRIh0stUwEZvFnNJaqHv7Ncun75PoORY2Wsz923i5XDqpL9/Xlpee1THNf8qpjKz2dUSS2iX3Njj4oJ2u/FPKsfo+7pF1JrnOkZ6o6oVWarbIkyHEYJyXvxxR5OQB6ML/ZwAvJgfLHbR0y/hujiebM1Co/cMlvFZL/K4ovpqCy+mI7K4ovpyGvxxbYPHTDxprkq3746YGqWfjGVjhmODSlI5Vs3IG/FF7ve+3frkg9MVTk9OL1g6hJzZm4NHmaugtq3bkDeiqtxfC7AbwNNVbl6GpxLl5qqYn/3J5OA1L51A/JiXA37jAUma+yIG5GvX0qheRt/NQlI9q0blPfiahwY8aXTbJ27s029pH/vdDALSPatG5S34moUJr1/3WSV7bsB0kwF9U18ZUC/lwaYujBW+9YNyFtxNY6MtTud5vagvSNzC5dON2nH7B6k9q0bkLfiaizlz6axA0xVKVwy8NVEU7sDmAek9q0bULHG1XgQVaxxNR5EaQHlpyJdLrH++Jw0gL7Djl2ufMl1yNekAVTvw6vkt7JlEqQBVNfMbUqpkAZQ3/+VWE98VBpABzvM2enF4EcuiiOP1j5iFgjZjj4X+2PP6jkSwI2Xg0v2fuew7u+5mMcUF3MY6doVbj60nQn4TyUCKCNgHvo3pYoYU6fEABW34oTboozxh4sCBD07oM8Wr4urSxiQR56LGZIICCz7W3BcV/QHmcNrV4z9BeBi50pNNwiAvi13A+Aqtw0udAkLbX8KAcrhUvgrfy5TKv9Ds+A6bkfsc5H3nosZUtwLKFbWeQRI2oM6tN99pF+NjJzIznvW1ClHAOWGzAZIirBDVIftO9u1VAESyl8NePdoInfI0z303nMxQyKDdLQS0OFH+HtJR60NCyrz982bOQIIBjwPEDMMCqelAayIUAISy//kdwVgVZqne1jCz8UUh5gIaCmHzhLcJ2O68KsL/ARAm/yu3/bfAWDb+/mgaipAYvnsliHxX+WxDN23Svi5GAXQmipkzTgEyCocYmAL/+yLag7Ibf3k2+uXyIBOcJlieYB9CU9EuBsU00Ul/FyMAugidwYgvefZxeHZADvEQwxGtIlNANhYoQBgkQBoH3+BxGWK5XfPAOVsCIcAAAUGSURBVCiM9XjIFK89FzMmJaB2CRn4r1eTnXu71rfn1uh2cFP9CiKgPX4Bu/hP7uu0RbUCT6HTfNXuKdub8oO0UH5buaRT6+qZcRYakreeixmUEtCS8F74LzehVqWelwEuda70zNr+4hOowlrVkQd3YvXwPqlxPRCgLQ1CY85GZ0vlp9cNfOxtj0dn1AAirwHO6O1pMw+uVIBmzuRmIiWEl2SXfEsqQG3bcm2R2hmb61oqpDnEWpRcT3xUlHsxq+kHog+zVIBOjDoAMMY/5H23ELncaVubpwOKWeFX+0367BaxRuPx+q1bmL6q5c+FRnYzcy+2r6+BQkpABwLbn4BlwUsWhLk1BrkA+ngoQJ92hw/vmxUyRF6r8GwYBYSqMAHNCZh2bNfgwJOsysjlpFHU1qLtISkBvYh+WxjDX5lMj9avyJYWkC2Sv9Ttgx0EExTPtD0NqCGektBuFKsycjlptKxj0faQlICq8ReIuYHLAHa6dZpHmxu0uVv1mGujG1abDbCmFYiAZgY6RfcNdv3I3h1cUwQkengsh/rWfeJ7gN9iw5qtD0nBVSyru1eq9x3FbBhGc+IAJEfsjw6POSc3c+uvEZFvWRFajevIGqr/AFA1PygZ+Rd+B9ha0W1AHTPvNiq/vnCmJQdGDBEAOY4+3lly9+DdQfbuqACJRSzt0xwfBuXb68ceWhXpl0L2oFqrUgYGW13Nxlv6bcE388mBba7kjY/IEptxNul2cFnVCQiQ1nXUbKEpQFHTAV55ml/40C0HLAbEf8fjWgLc4FIhKhEBwo6fZ9Mkdw/aWoV3RwlIKmKZg9yIqavC+NvWpZwAaCrAZY78auvHyr1uwSHhbq1gciMu8IXlPCDk2nfWmy02szEkA2D+QB6Qi+voFf3ZNkpAywLeG+U/BfK+CzEzy5EOaDc/4PRAr2pKhZoo6DkapA+nFoLk7sFbK3t3lICkIpadALe51EnIIf2LCOgngJsCoP57E2psHvaNZPn6st5BY3hAd/jlviPFZhJbkVzLfhfX0YRYU4BgTsOw+ALoxI12K1SvC6A1II5BvCT3Db+1Cu8OXiUAkoqgAZkH9I8YfjlNBLRfBsTfus+p25xcOqR0wsfXEos1mUPBwuNGiM1M/rPYmovr6J/ddbdGAej3NKItx9MMhBhjSwuIHGIiINF9g7ZW4d3BeQIgqYgAaGWVXICvKYCUusPhwOkLKziTOX6Xzav2mdjMqkr8EbqyM1/TxXXU73WXdooA9Od6ktp6EtBwcZAmEtw3yPWj9O4sncsDehW58M9KRQRABXV6JW9qZDmHvUUsQDA6ZOK2XTPC3ucPsdrrD8WG3xObsT3Z89jaOqNRTa3rqLn+WOKF52IqQMGXYTW6qpIBie4b5PpReHc68beB5PUrTaUiGBDfQlqnim2OW27jKkxA9rnNKlZpudjJA9rUJLTDWdnS1Z6Va4zORzU1riNbqP7TCQFQSvk+H/1w1VOI1LJGprjXwE00iJ0pX2iweDJndAbGihj9MuLLuC6sfK9LZJWOY7866XGfHEw1NXXVVTeC/nPzYjvDvzkwDqjFZv0yqreV3dw67W+NgpsN+tSzj9/Qzapb2hoVXHOI4emdhgHtN/J0y/V1bnmLanDtjXbm4ZcW0O3ExvX+eaFEuuKb0gL6qup+o4Nh6ZAWkK3BFmq5UiuXMWjH1yXRDd+V3js3S73KAOmoDJCO/h/Xb7T6qlDxoAAAAABJRU5ErkJggg==" /><!-- --> <br> <strong>resid()</strong> : Returns the vector of residuals e.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">item<span class="op">$</span><span class="kw">resid</span>()</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;        Petal.Length</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   [1,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   [2,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   [3,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   [4,]        0.038</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;   [5,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;   [6,]        0.238</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;   [7,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   [8,]        0.038</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;   [9,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  [10,]        0.038</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  [11,]        0.038</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  [12,]        0.138</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  [13,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  [14,]       -0.362</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  [15,]       -0.262</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  [16,]        0.038</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  [17,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  [18,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  [19,]        0.238</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  [20,]        0.038</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  [21,]        0.238</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  [22,]        0.038</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  [23,]       -0.462</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  [24,]        0.238</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  [25,]        0.438</span></a>
+<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  [26,]        0.138</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  [27,]        0.138</span></a>
+<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  [28,]        0.038</span></a>
+<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  [29,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  [30,]        0.138</span></a>
+<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt;  [31,]        0.138</span></a>
+<a class="sourceLine" id="cb5-34" data-line-number="34"><span class="co">#&gt;  [32,]        0.038</span></a>
+<a class="sourceLine" id="cb5-35" data-line-number="35"><span class="co">#&gt;  [33,]        0.038</span></a>
+<a class="sourceLine" id="cb5-36" data-line-number="36"><span class="co">#&gt;  [34,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-37" data-line-number="37"><span class="co">#&gt;  [35,]        0.038</span></a>
+<a class="sourceLine" id="cb5-38" data-line-number="38"><span class="co">#&gt;  [36,]       -0.262</span></a>
+<a class="sourceLine" id="cb5-39" data-line-number="39"><span class="co">#&gt;  [37,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-40" data-line-number="40"><span class="co">#&gt;  [38,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-41" data-line-number="41"><span class="co">#&gt;  [39,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-42" data-line-number="42"><span class="co">#&gt;  [40,]        0.038</span></a>
+<a class="sourceLine" id="cb5-43" data-line-number="43"><span class="co">#&gt;  [41,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-44" data-line-number="44"><span class="co">#&gt;  [42,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-45" data-line-number="45"><span class="co">#&gt;  [43,]       -0.162</span></a>
+<a class="sourceLine" id="cb5-46" data-line-number="46"><span class="co">#&gt;  [44,]        0.138</span></a>
+<a class="sourceLine" id="cb5-47" data-line-number="47"><span class="co">#&gt;  [45,]        0.438</span></a>
+<a class="sourceLine" id="cb5-48" data-line-number="48"><span class="co">#&gt;  [46,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-49" data-line-number="49"><span class="co">#&gt;  [47,]        0.138</span></a>
+<a class="sourceLine" id="cb5-50" data-line-number="50"><span class="co">#&gt;  [48,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-51" data-line-number="51"><span class="co">#&gt;  [49,]        0.038</span></a>
+<a class="sourceLine" id="cb5-52" data-line-number="52"><span class="co">#&gt;  [50,]       -0.062</span></a>
+<a class="sourceLine" id="cb5-53" data-line-number="53"><span class="co">#&gt;  [51,]        0.440</span></a>
+<a class="sourceLine" id="cb5-54" data-line-number="54"><span class="co">#&gt;  [52,]        0.240</span></a>
+<a class="sourceLine" id="cb5-55" data-line-number="55"><span class="co">#&gt;  [53,]        0.640</span></a>
+<a class="sourceLine" id="cb5-56" data-line-number="56"><span class="co">#&gt;  [54,]       -0.260</span></a>
+<a class="sourceLine" id="cb5-57" data-line-number="57"><span class="co">#&gt;  [55,]        0.340</span></a>
+<a class="sourceLine" id="cb5-58" data-line-number="58"><span class="co">#&gt;  [56,]        0.240</span></a>
+<a class="sourceLine" id="cb5-59" data-line-number="59"><span class="co">#&gt;  [57,]        0.440</span></a>
+<a class="sourceLine" id="cb5-60" data-line-number="60"><span class="co">#&gt;  [58,]       -0.960</span></a>
+<a class="sourceLine" id="cb5-61" data-line-number="61"><span class="co">#&gt;  [59,]        0.340</span></a>
+<a class="sourceLine" id="cb5-62" data-line-number="62"><span class="co">#&gt;  [60,]       -0.360</span></a>
+<a class="sourceLine" id="cb5-63" data-line-number="63"><span class="co">#&gt;  [61,]       -0.760</span></a>
+<a class="sourceLine" id="cb5-64" data-line-number="64"><span class="co">#&gt;  [62,]       -0.060</span></a>
+<a class="sourceLine" id="cb5-65" data-line-number="65"><span class="co">#&gt;  [63,]       -0.260</span></a>
+<a class="sourceLine" id="cb5-66" data-line-number="66"><span class="co">#&gt;  [64,]        0.440</span></a>
+<a class="sourceLine" id="cb5-67" data-line-number="67"><span class="co">#&gt;  [65,]       -0.660</span></a>
+<a class="sourceLine" id="cb5-68" data-line-number="68"><span class="co">#&gt;  [66,]        0.140</span></a>
+<a class="sourceLine" id="cb5-69" data-line-number="69"><span class="co">#&gt;  [67,]        0.240</span></a>
+<a class="sourceLine" id="cb5-70" data-line-number="70"><span class="co">#&gt;  [68,]       -0.160</span></a>
+<a class="sourceLine" id="cb5-71" data-line-number="71"><span class="co">#&gt;  [69,]        0.240</span></a>
+<a class="sourceLine" id="cb5-72" data-line-number="72"><span class="co">#&gt;  [70,]       -0.360</span></a>
+<a class="sourceLine" id="cb5-73" data-line-number="73"><span class="co">#&gt;  [71,]        0.540</span></a>
+<a class="sourceLine" id="cb5-74" data-line-number="74"><span class="co">#&gt;  [72,]       -0.260</span></a>
+<a class="sourceLine" id="cb5-75" data-line-number="75"><span class="co">#&gt;  [73,]        0.640</span></a>
+<a class="sourceLine" id="cb5-76" data-line-number="76"><span class="co">#&gt;  [74,]        0.440</span></a>
+<a class="sourceLine" id="cb5-77" data-line-number="77"><span class="co">#&gt;  [75,]        0.040</span></a>
+<a class="sourceLine" id="cb5-78" data-line-number="78"><span class="co">#&gt;  [76,]        0.140</span></a>
+<a class="sourceLine" id="cb5-79" data-line-number="79"><span class="co">#&gt;  [77,]        0.540</span></a>
+<a class="sourceLine" id="cb5-80" data-line-number="80"><span class="co">#&gt;  [78,]        0.740</span></a>
+<a class="sourceLine" id="cb5-81" data-line-number="81"><span class="co">#&gt;  [79,]        0.240</span></a>
+<a class="sourceLine" id="cb5-82" data-line-number="82"><span class="co">#&gt;  [80,]       -0.760</span></a>
+<a class="sourceLine" id="cb5-83" data-line-number="83"><span class="co">#&gt;  [81,]       -0.460</span></a>
+<a class="sourceLine" id="cb5-84" data-line-number="84"><span class="co">#&gt;  [82,]       -0.560</span></a>
+<a class="sourceLine" id="cb5-85" data-line-number="85"><span class="co">#&gt;  [83,]       -0.360</span></a>
+<a class="sourceLine" id="cb5-86" data-line-number="86"><span class="co">#&gt;  [84,]        0.840</span></a>
+<a class="sourceLine" id="cb5-87" data-line-number="87"><span class="co">#&gt;  [85,]        0.240</span></a>
+<a class="sourceLine" id="cb5-88" data-line-number="88"><span class="co">#&gt;  [86,]        0.240</span></a>
+<a class="sourceLine" id="cb5-89" data-line-number="89"><span class="co">#&gt;  [87,]        0.440</span></a>
+<a class="sourceLine" id="cb5-90" data-line-number="90"><span class="co">#&gt;  [88,]        0.140</span></a>
+<a class="sourceLine" id="cb5-91" data-line-number="91"><span class="co">#&gt;  [89,]       -0.160</span></a>
+<a class="sourceLine" id="cb5-92" data-line-number="92"><span class="co">#&gt;  [90,]       -0.260</span></a>
+<a class="sourceLine" id="cb5-93" data-line-number="93"><span class="co">#&gt;  [91,]        0.140</span></a>
+<a class="sourceLine" id="cb5-94" data-line-number="94"><span class="co">#&gt;  [92,]        0.340</span></a>
+<a class="sourceLine" id="cb5-95" data-line-number="95"><span class="co">#&gt;  [93,]       -0.260</span></a>
+<a class="sourceLine" id="cb5-96" data-line-number="96"><span class="co">#&gt;  [94,]       -0.960</span></a>
+<a class="sourceLine" id="cb5-97" data-line-number="97"><span class="co">#&gt;  [95,]       -0.060</span></a>
+<a class="sourceLine" id="cb5-98" data-line-number="98"><span class="co">#&gt;  [96,]       -0.060</span></a>
+<a class="sourceLine" id="cb5-99" data-line-number="99"><span class="co">#&gt;  [97,]       -0.060</span></a>
+<a class="sourceLine" id="cb5-100" data-line-number="100"><span class="co">#&gt;  [98,]        0.040</span></a>
+<a class="sourceLine" id="cb5-101" data-line-number="101"><span class="co">#&gt;  [99,]       -1.260</span></a>
+<a class="sourceLine" id="cb5-102" data-line-number="102"><span class="co">#&gt; [100,]       -0.160</span></a>
+<a class="sourceLine" id="cb5-103" data-line-number="103"><span class="co">#&gt; [101,]        0.448</span></a>
+<a class="sourceLine" id="cb5-104" data-line-number="104"><span class="co">#&gt; [102,]       -0.452</span></a>
+<a class="sourceLine" id="cb5-105" data-line-number="105"><span class="co">#&gt; [103,]        0.348</span></a>
+<a class="sourceLine" id="cb5-106" data-line-number="106"><span class="co">#&gt; [104,]        0.048</span></a>
+<a class="sourceLine" id="cb5-107" data-line-number="107"><span class="co">#&gt; [105,]        0.248</span></a>
+<a class="sourceLine" id="cb5-108" data-line-number="108"><span class="co">#&gt; [106,]        1.048</span></a>
+<a class="sourceLine" id="cb5-109" data-line-number="109"><span class="co">#&gt; [107,]       -1.052</span></a>
+<a class="sourceLine" id="cb5-110" data-line-number="110"><span class="co">#&gt; [108,]        0.748</span></a>
+<a class="sourceLine" id="cb5-111" data-line-number="111"><span class="co">#&gt; [109,]        0.248</span></a>
+<a class="sourceLine" id="cb5-112" data-line-number="112"><span class="co">#&gt; [110,]        0.548</span></a>
+<a class="sourceLine" id="cb5-113" data-line-number="113"><span class="co">#&gt; [111,]       -0.452</span></a>
+<a class="sourceLine" id="cb5-114" data-line-number="114"><span class="co">#&gt; [112,]       -0.252</span></a>
+<a class="sourceLine" id="cb5-115" data-line-number="115"><span class="co">#&gt; [113,]       -0.052</span></a>
+<a class="sourceLine" id="cb5-116" data-line-number="116"><span class="co">#&gt; [114,]       -0.552</span></a>
+<a class="sourceLine" id="cb5-117" data-line-number="117"><span class="co">#&gt; [115,]       -0.452</span></a>
+<a class="sourceLine" id="cb5-118" data-line-number="118"><span class="co">#&gt; [116,]       -0.252</span></a>
+<a class="sourceLine" id="cb5-119" data-line-number="119"><span class="co">#&gt; [117,]       -0.052</span></a>
+<a class="sourceLine" id="cb5-120" data-line-number="120"><span class="co">#&gt; [118,]        1.148</span></a>
+<a class="sourceLine" id="cb5-121" data-line-number="121"><span class="co">#&gt; [119,]        1.348</span></a>
+<a class="sourceLine" id="cb5-122" data-line-number="122"><span class="co">#&gt; [120,]       -0.552</span></a>
+<a class="sourceLine" id="cb5-123" data-line-number="123"><span class="co">#&gt; [121,]        0.148</span></a>
+<a class="sourceLine" id="cb5-124" data-line-number="124"><span class="co">#&gt; [122,]       -0.652</span></a>
+<a class="sourceLine" id="cb5-125" data-line-number="125"><span class="co">#&gt; [123,]        1.148</span></a>
+<a class="sourceLine" id="cb5-126" data-line-number="126"><span class="co">#&gt; [124,]       -0.652</span></a>
+<a class="sourceLine" id="cb5-127" data-line-number="127"><span class="co">#&gt; [125,]        0.148</span></a>
+<a class="sourceLine" id="cb5-128" data-line-number="128"><span class="co">#&gt; [126,]        0.448</span></a>
+<a class="sourceLine" id="cb5-129" data-line-number="129"><span class="co">#&gt; [127,]       -0.752</span></a>
+<a class="sourceLine" id="cb5-130" data-line-number="130"><span class="co">#&gt; [128,]       -0.652</span></a>
+<a class="sourceLine" id="cb5-131" data-line-number="131"><span class="co">#&gt; [129,]        0.048</span></a>
+<a class="sourceLine" id="cb5-132" data-line-number="132"><span class="co">#&gt; [130,]        0.248</span></a>
+<a class="sourceLine" id="cb5-133" data-line-number="133"><span class="co">#&gt; [131,]        0.548</span></a>
+<a class="sourceLine" id="cb5-134" data-line-number="134"><span class="co">#&gt; [132,]        0.848</span></a>
+<a class="sourceLine" id="cb5-135" data-line-number="135"><span class="co">#&gt; [133,]        0.048</span></a>
+<a class="sourceLine" id="cb5-136" data-line-number="136"><span class="co">#&gt; [134,]       -0.452</span></a>
+<a class="sourceLine" id="cb5-137" data-line-number="137"><span class="co">#&gt; [135,]        0.048</span></a>
+<a class="sourceLine" id="cb5-138" data-line-number="138"><span class="co">#&gt; [136,]        0.548</span></a>
+<a class="sourceLine" id="cb5-139" data-line-number="139"><span class="co">#&gt; [137,]        0.048</span></a>
+<a class="sourceLine" id="cb5-140" data-line-number="140"><span class="co">#&gt; [138,]       -0.052</span></a>
+<a class="sourceLine" id="cb5-141" data-line-number="141"><span class="co">#&gt; [139,]       -0.752</span></a>
+<a class="sourceLine" id="cb5-142" data-line-number="142"><span class="co">#&gt; [140,]       -0.152</span></a>
+<a class="sourceLine" id="cb5-143" data-line-number="143"><span class="co">#&gt; [141,]        0.048</span></a>
+<a class="sourceLine" id="cb5-144" data-line-number="144"><span class="co">#&gt; [142,]       -0.452</span></a>
+<a class="sourceLine" id="cb5-145" data-line-number="145"><span class="co">#&gt; [143,]       -0.452</span></a>
+<a class="sourceLine" id="cb5-146" data-line-number="146"><span class="co">#&gt; [144,]        0.348</span></a>
+<a class="sourceLine" id="cb5-147" data-line-number="147"><span class="co">#&gt; [145,]        0.148</span></a>
+<a class="sourceLine" id="cb5-148" data-line-number="148"><span class="co">#&gt; [146,]       -0.352</span></a>
+<a class="sourceLine" id="cb5-149" data-line-number="149"><span class="co">#&gt; [147,]       -0.552</span></a>
+<a class="sourceLine" id="cb5-150" data-line-number="150"><span class="co">#&gt; [148,]       -0.352</span></a>
+<a class="sourceLine" id="cb5-151" data-line-number="151"><span class="co">#&gt; [149,]       -0.152</span></a>
+<a class="sourceLine" id="cb5-152" data-line-number="152"><span class="co">#&gt; [150,]       -0.452</span></a></code></pre></div>
+<dl>
+<dt>pred()</dt>
+<dd>Returns the predicted values yˆ.
+</dd>
+</dl>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">item<span class="op">$</span><span class="kw">pred</span>()</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt;     Petal.Length</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; 1          1.462</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; 2          1.462</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 3          1.462</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 4          1.462</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 5          1.462</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 6          1.462</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 7          1.462</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 8          1.462</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 9          1.462</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 10         1.462</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 11         1.462</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 12         1.462</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 13         1.462</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; 14         1.462</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; 15         1.462</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; 16         1.462</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; 17         1.462</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; 18         1.462</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 19         1.462</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 20         1.462</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; 21         1.462</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; 22         1.462</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; 23         1.462</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; 24         1.462</span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt; 25         1.462</span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt; 26         1.462</span></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt; 27         1.462</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt; 28         1.462</span></a>
+<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; 29         1.462</span></a>
+<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt; 30         1.462</span></a>
+<a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co">#&gt; 31         1.462</span></a>
+<a class="sourceLine" id="cb6-34" data-line-number="34"><span class="co">#&gt; 32         1.462</span></a>
+<a class="sourceLine" id="cb6-35" data-line-number="35"><span class="co">#&gt; 33         1.462</span></a>
+<a class="sourceLine" id="cb6-36" data-line-number="36"><span class="co">#&gt; 34         1.462</span></a>
+<a class="sourceLine" id="cb6-37" data-line-number="37"><span class="co">#&gt; 35         1.462</span></a>
+<a class="sourceLine" id="cb6-38" data-line-number="38"><span class="co">#&gt; 36         1.462</span></a>
+<a class="sourceLine" id="cb6-39" data-line-number="39"><span class="co">#&gt; 37         1.462</span></a>
+<a class="sourceLine" id="cb6-40" data-line-number="40"><span class="co">#&gt; 38         1.462</span></a>
+<a class="sourceLine" id="cb6-41" data-line-number="41"><span class="co">#&gt; 39         1.462</span></a>
+<a class="sourceLine" id="cb6-42" data-line-number="42"><span class="co">#&gt; 40         1.462</span></a>
+<a class="sourceLine" id="cb6-43" data-line-number="43"><span class="co">#&gt; 41         1.462</span></a>
+<a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">#&gt; 42         1.462</span></a>
+<a class="sourceLine" id="cb6-45" data-line-number="45"><span class="co">#&gt; 43         1.462</span></a>
+<a class="sourceLine" id="cb6-46" data-line-number="46"><span class="co">#&gt; 44         1.462</span></a>
+<a class="sourceLine" id="cb6-47" data-line-number="47"><span class="co">#&gt; 45         1.462</span></a>
+<a class="sourceLine" id="cb6-48" data-line-number="48"><span class="co">#&gt; 46         1.462</span></a>
+<a class="sourceLine" id="cb6-49" data-line-number="49"><span class="co">#&gt; 47         1.462</span></a>
+<a class="sourceLine" id="cb6-50" data-line-number="50"><span class="co">#&gt; 48         1.462</span></a>
+<a class="sourceLine" id="cb6-51" data-line-number="51"><span class="co">#&gt; 49         1.462</span></a>
+<a class="sourceLine" id="cb6-52" data-line-number="52"><span class="co">#&gt; 50         1.462</span></a>
+<a class="sourceLine" id="cb6-53" data-line-number="53"><span class="co">#&gt; 51         4.260</span></a>
+<a class="sourceLine" id="cb6-54" data-line-number="54"><span class="co">#&gt; 52         4.260</span></a>
+<a class="sourceLine" id="cb6-55" data-line-number="55"><span class="co">#&gt; 53         4.260</span></a>
+<a class="sourceLine" id="cb6-56" data-line-number="56"><span class="co">#&gt; 54         4.260</span></a>
+<a class="sourceLine" id="cb6-57" data-line-number="57"><span class="co">#&gt; 55         4.260</span></a>
+<a class="sourceLine" id="cb6-58" data-line-number="58"><span class="co">#&gt; 56         4.260</span></a>
+<a class="sourceLine" id="cb6-59" data-line-number="59"><span class="co">#&gt; 57         4.260</span></a>
+<a class="sourceLine" id="cb6-60" data-line-number="60"><span class="co">#&gt; 58         4.260</span></a>
+<a class="sourceLine" id="cb6-61" data-line-number="61"><span class="co">#&gt; 59         4.260</span></a>
+<a class="sourceLine" id="cb6-62" data-line-number="62"><span class="co">#&gt; 60         4.260</span></a>
+<a class="sourceLine" id="cb6-63" data-line-number="63"><span class="co">#&gt; 61         4.260</span></a>
+<a class="sourceLine" id="cb6-64" data-line-number="64"><span class="co">#&gt; 62         4.260</span></a>
+<a class="sourceLine" id="cb6-65" data-line-number="65"><span class="co">#&gt; 63         4.260</span></a>
+<a class="sourceLine" id="cb6-66" data-line-number="66"><span class="co">#&gt; 64         4.260</span></a>
+<a class="sourceLine" id="cb6-67" data-line-number="67"><span class="co">#&gt; 65         4.260</span></a>
+<a class="sourceLine" id="cb6-68" data-line-number="68"><span class="co">#&gt; 66         4.260</span></a>
+<a class="sourceLine" id="cb6-69" data-line-number="69"><span class="co">#&gt; 67         4.260</span></a>
+<a class="sourceLine" id="cb6-70" data-line-number="70"><span class="co">#&gt; 68         4.260</span></a>
+<a class="sourceLine" id="cb6-71" data-line-number="71"><span class="co">#&gt; 69         4.260</span></a>
+<a class="sourceLine" id="cb6-72" data-line-number="72"><span class="co">#&gt; 70         4.260</span></a>
+<a class="sourceLine" id="cb6-73" data-line-number="73"><span class="co">#&gt; 71         4.260</span></a>
+<a class="sourceLine" id="cb6-74" data-line-number="74"><span class="co">#&gt; 72         4.260</span></a>
+<a class="sourceLine" id="cb6-75" data-line-number="75"><span class="co">#&gt; 73         4.260</span></a>
+<a class="sourceLine" id="cb6-76" data-line-number="76"><span class="co">#&gt; 74         4.260</span></a>
+<a class="sourceLine" id="cb6-77" data-line-number="77"><span class="co">#&gt; 75         4.260</span></a>
+<a class="sourceLine" id="cb6-78" data-line-number="78"><span class="co">#&gt; 76         4.260</span></a>
+<a class="sourceLine" id="cb6-79" data-line-number="79"><span class="co">#&gt; 77         4.260</span></a>
+<a class="sourceLine" id="cb6-80" data-line-number="80"><span class="co">#&gt; 78         4.260</span></a>
+<a class="sourceLine" id="cb6-81" data-line-number="81"><span class="co">#&gt; 79         4.260</span></a>
+<a class="sourceLine" id="cb6-82" data-line-number="82"><span class="co">#&gt; 80         4.260</span></a>
+<a class="sourceLine" id="cb6-83" data-line-number="83"><span class="co">#&gt; 81         4.260</span></a>
+<a class="sourceLine" id="cb6-84" data-line-number="84"><span class="co">#&gt; 82         4.260</span></a>
+<a class="sourceLine" id="cb6-85" data-line-number="85"><span class="co">#&gt; 83         4.260</span></a>
+<a class="sourceLine" id="cb6-86" data-line-number="86"><span class="co">#&gt; 84         4.260</span></a>
+<a class="sourceLine" id="cb6-87" data-line-number="87"><span class="co">#&gt; 85         4.260</span></a>
+<a class="sourceLine" id="cb6-88" data-line-number="88"><span class="co">#&gt; 86         4.260</span></a>
+<a class="sourceLine" id="cb6-89" data-line-number="89"><span class="co">#&gt; 87         4.260</span></a>
+<a class="sourceLine" id="cb6-90" data-line-number="90"><span class="co">#&gt; 88         4.260</span></a>
+<a class="sourceLine" id="cb6-91" data-line-number="91"><span class="co">#&gt; 89         4.260</span></a>
+<a class="sourceLine" id="cb6-92" data-line-number="92"><span class="co">#&gt; 90         4.260</span></a>
+<a class="sourceLine" id="cb6-93" data-line-number="93"><span class="co">#&gt; 91         4.260</span></a>
+<a class="sourceLine" id="cb6-94" data-line-number="94"><span class="co">#&gt; 92         4.260</span></a>
+<a class="sourceLine" id="cb6-95" data-line-number="95"><span class="co">#&gt; 93         4.260</span></a>
+<a class="sourceLine" id="cb6-96" data-line-number="96"><span class="co">#&gt; 94         4.260</span></a>
+<a class="sourceLine" id="cb6-97" data-line-number="97"><span class="co">#&gt; 95         4.260</span></a>
+<a class="sourceLine" id="cb6-98" data-line-number="98"><span class="co">#&gt; 96         4.260</span></a>
+<a class="sourceLine" id="cb6-99" data-line-number="99"><span class="co">#&gt; 97         4.260</span></a>
+<a class="sourceLine" id="cb6-100" data-line-number="100"><span class="co">#&gt; 98         4.260</span></a>
+<a class="sourceLine" id="cb6-101" data-line-number="101"><span class="co">#&gt; 99         4.260</span></a>
+<a class="sourceLine" id="cb6-102" data-line-number="102"><span class="co">#&gt; 100        4.260</span></a>
+<a class="sourceLine" id="cb6-103" data-line-number="103"><span class="co">#&gt; 101        5.552</span></a>
+<a class="sourceLine" id="cb6-104" data-line-number="104"><span class="co">#&gt; 102        5.552</span></a>
+<a class="sourceLine" id="cb6-105" data-line-number="105"><span class="co">#&gt; 103        5.552</span></a>
+<a class="sourceLine" id="cb6-106" data-line-number="106"><span class="co">#&gt; 104        5.552</span></a>
+<a class="sourceLine" id="cb6-107" data-line-number="107"><span class="co">#&gt; 105        5.552</span></a>
+<a class="sourceLine" id="cb6-108" data-line-number="108"><span class="co">#&gt; 106        5.552</span></a>
+<a class="sourceLine" id="cb6-109" data-line-number="109"><span class="co">#&gt; 107        5.552</span></a>
+<a class="sourceLine" id="cb6-110" data-line-number="110"><span class="co">#&gt; 108        5.552</span></a>
+<a class="sourceLine" id="cb6-111" data-line-number="111"><span class="co">#&gt; 109        5.552</span></a>
+<a class="sourceLine" id="cb6-112" data-line-number="112"><span class="co">#&gt; 110        5.552</span></a>
+<a class="sourceLine" id="cb6-113" data-line-number="113"><span class="co">#&gt; 111        5.552</span></a>
+<a class="sourceLine" id="cb6-114" data-line-number="114"><span class="co">#&gt; 112        5.552</span></a>
+<a class="sourceLine" id="cb6-115" data-line-number="115"><span class="co">#&gt; 113        5.552</span></a>
+<a class="sourceLine" id="cb6-116" data-line-number="116"><span class="co">#&gt; 114        5.552</span></a>
+<a class="sourceLine" id="cb6-117" data-line-number="117"><span class="co">#&gt; 115        5.552</span></a>
+<a class="sourceLine" id="cb6-118" data-line-number="118"><span class="co">#&gt; 116        5.552</span></a>
+<a class="sourceLine" id="cb6-119" data-line-number="119"><span class="co">#&gt; 117        5.552</span></a>
+<a class="sourceLine" id="cb6-120" data-line-number="120"><span class="co">#&gt; 118        5.552</span></a>
+<a class="sourceLine" id="cb6-121" data-line-number="121"><span class="co">#&gt; 119        5.552</span></a>
+<a class="sourceLine" id="cb6-122" data-line-number="122"><span class="co">#&gt; 120        5.552</span></a>
+<a class="sourceLine" id="cb6-123" data-line-number="123"><span class="co">#&gt; 121        5.552</span></a>
+<a class="sourceLine" id="cb6-124" data-line-number="124"><span class="co">#&gt; 122        5.552</span></a>
+<a class="sourceLine" id="cb6-125" data-line-number="125"><span class="co">#&gt; 123        5.552</span></a>
+<a class="sourceLine" id="cb6-126" data-line-number="126"><span class="co">#&gt; 124        5.552</span></a>
+<a class="sourceLine" id="cb6-127" data-line-number="127"><span class="co">#&gt; 125        5.552</span></a>
+<a class="sourceLine" id="cb6-128" data-line-number="128"><span class="co">#&gt; 126        5.552</span></a>
+<a class="sourceLine" id="cb6-129" data-line-number="129"><span class="co">#&gt; 127        5.552</span></a>
+<a class="sourceLine" id="cb6-130" data-line-number="130"><span class="co">#&gt; 128        5.552</span></a>
+<a class="sourceLine" id="cb6-131" data-line-number="131"><span class="co">#&gt; 129        5.552</span></a>
+<a class="sourceLine" id="cb6-132" data-line-number="132"><span class="co">#&gt; 130        5.552</span></a>
+<a class="sourceLine" id="cb6-133" data-line-number="133"><span class="co">#&gt; 131        5.552</span></a>
+<a class="sourceLine" id="cb6-134" data-line-number="134"><span class="co">#&gt; 132        5.552</span></a>
+<a class="sourceLine" id="cb6-135" data-line-number="135"><span class="co">#&gt; 133        5.552</span></a>
+<a class="sourceLine" id="cb6-136" data-line-number="136"><span class="co">#&gt; 134        5.552</span></a>
+<a class="sourceLine" id="cb6-137" data-line-number="137"><span class="co">#&gt; 135        5.552</span></a>
+<a class="sourceLine" id="cb6-138" data-line-number="138"><span class="co">#&gt; 136        5.552</span></a>
+<a class="sourceLine" id="cb6-139" data-line-number="139"><span class="co">#&gt; 137        5.552</span></a>
+<a class="sourceLine" id="cb6-140" data-line-number="140"><span class="co">#&gt; 138        5.552</span></a>
+<a class="sourceLine" id="cb6-141" data-line-number="141"><span class="co">#&gt; 139        5.552</span></a>
+<a class="sourceLine" id="cb6-142" data-line-number="142"><span class="co">#&gt; 140        5.552</span></a>
+<a class="sourceLine" id="cb6-143" data-line-number="143"><span class="co">#&gt; 141        5.552</span></a>
+<a class="sourceLine" id="cb6-144" data-line-number="144"><span class="co">#&gt; 142        5.552</span></a>
+<a class="sourceLine" id="cb6-145" data-line-number="145"><span class="co">#&gt; 143        5.552</span></a>
+<a class="sourceLine" id="cb6-146" data-line-number="146"><span class="co">#&gt; 144        5.552</span></a>
+<a class="sourceLine" id="cb6-147" data-line-number="147"><span class="co">#&gt; 145        5.552</span></a>
+<a class="sourceLine" id="cb6-148" data-line-number="148"><span class="co">#&gt; 146        5.552</span></a>
+<a class="sourceLine" id="cb6-149" data-line-number="149"><span class="co">#&gt; 147        5.552</span></a>
+<a class="sourceLine" id="cb6-150" data-line-number="150"><span class="co">#&gt; 148        5.552</span></a>
+<a class="sourceLine" id="cb6-151" data-line-number="151"><span class="co">#&gt; 149        5.552</span></a>
+<a class="sourceLine" id="cb6-152" data-line-number="152"><span class="co">#&gt; 150        5.552</span></a></code></pre></div>
+<dl>
+<dt>coef()</dt>
+<dd>Returns the coefficients as a named vector.
+</dd>
+</dl>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">item<span class="op">$</span><span class="kw">coef</span>()</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt;       (Intercept) Speciesversicolor  Speciesvirginica </span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;             1.462             2.798             4.090</span></a></code></pre></div>
+<dl>
+<dt>summary()</dt>
+<dd>Returns the coefficients with their standard error, t-value and p-value as well as the estimate of. and the degrees of freedom in the model.
+</dd>
+</dl>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">item<span class="op">$</span><span class="kw">summary</span>()</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;               Estimate    Std. Error      t value    Pr(&gt;|t|)</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;    (Intercept) 1.46200000000001 0.0608584842239833 24.0229446829348 9.30305152283648e-53 *** </span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; Speciesversicolor 2.79799999999999 0.0860668937750262 32.5095966320546 5.254587420216e-69 *** </span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; Speciesvirginica 4.08999999999999 0.0860668937750262 47.5211759203372 4.10613861905217e-91 *** </span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; Residual standard error: 0.430334468875131 on 147 degrees of freedom</span></a></code></pre></div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
@@ -365,10 +714,23 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </div>
 <div id="examples" class="section level1">
 <h1>Examples</h1>
-<pre><code>item &lt;- linreg(formula = Petal.Length~Species, data = iris)
-item$print()
-item$summary()
-</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">item &lt;-<span class="st"> </span><span class="kw">linreg</span>(<span class="dt">formula =</span> Petal.Length<span class="op">~</span>Species, <span class="dt">data =</span> iris)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">item<span class="op">$</span><span class="kw">print</span>()</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; linreg(formula = Petal.Length ~ Species, data = iris)</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt;  (Intercept) Speciesversicolor Speciesvirginica</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt;         1.46               2.8             4.09</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">item<span class="op">$</span><span class="kw">summary</span>()</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;               Estimate    Std. Error      t value    Pr(&gt;|t|)</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;    (Intercept) 1.46200000000001 0.0608584842239833 24.0229446829348 9.30305152283648e-53 *** </span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt; Speciesversicolor 2.79799999999999 0.0860668937750262 32.5095966320546 5.254587420216e-69 *** </span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; Speciesvirginica 4.08999999999999 0.0860668937750262 47.5211759203372 4.10613861905217e-91 *** </span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; Residual standard error: 0.430334468875131 on 147 degrees of freedom</span></a></code></pre></div>
 </div>
 
 
