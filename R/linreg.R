@@ -16,7 +16,8 @@ library(methods)
 #' @field p_value matrix.
 #'
 #' @return This class returns linear regression data including t-values and p-values
-#' @export
+#' @export linreg
+#' @exportClass linreg
 #'
 #' @import ggplot2 png gridExtra methods
 #'
