@@ -16,6 +16,7 @@ library(methods)
 #' @field p_value matrix.
 #'
 #' @return This class returns linear regression data including t-values and p-values
+#' @exportMethod initialize
 #' @export linreg
 #' @exportClass linreg
 #'
