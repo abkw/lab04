@@ -36,7 +36,7 @@ formula
   : an object of class ``` formula ``` (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under ‘Details’.
   
 data
-  : a vector specifying a subset of observations to be used in the fitting process.
+  : a data frame specifying a subset of observations to be used in the fitting process.
 
 # Value
 
@@ -68,31 +68,44 @@ p_value
   
 # Methods
 
-print()
+**print()**
   :prints out the coefficients and coefficient names, similar as done by the lm class
-  
+```{r two}
+item <- linreg(formula = Petal.Length~Species, data = iris)
+item$print()
+```
 plot()
   : Plots Residuals vs Fitted & Scale−Location scatter plot
-  
-resid()
+```{r plot}
+item$plot()
+```
+  <br/ >  **resid()**
   : Returns the vector of residuals e.
-
+```{r resid}
+item$resid()
+```
 pred()
   : Returns the predicted values yˆ.
-  
+```{r pred}
+item$pred()
+``` 
 coef()
   : Returns the coefficients as a named vector.
-
+```{r coef}
+item$coef()
+```
 summary()
   : Returns the coefficients with their standard error, t-value and p-value as well as the estimate of. and the degrees of freedom in the model.
-
+```{r summary}
+item$summary()
+```
 # References
 
 R packages by Hadley Wickham 
 
 # Examples
 
-```
+```{r one, include=TRUE}
 item <- linreg(formula = Petal.Length~Species, data = iris)
 item$print()
 item$summary()
