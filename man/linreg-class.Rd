@@ -39,8 +39,8 @@ residuals variance, variance of regression coefficients, t values, and p values
 
 
 \examples{
-\dontrun{
+
 data("iris")
 item <- linreg(formula = Petal.Length~Species, data = iris)
-}
+
 }

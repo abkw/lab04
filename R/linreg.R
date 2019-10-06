@@ -16,15 +16,15 @@ library(methods)
 #' @field p_value matrix.
 #'
 #' @return This class returns linear regression data including t-values and p-values
-#' @export
+#' @export linreg
 #'
 #' @import ggplot2 png gridExtra methods
 #'
 #' @examples
-#' \dontrun{
+#'
 #' data("iris")
 #' item <- linreg(formula = Petal.Length~Species, data = iris)
-#' }
+#'
 
 linreg <- setRefClass(Class =  "linreg",
 
@@ -175,4 +175,3 @@ linreg <- setRefClass(Class =  "linreg",
                         }
                       )
 )
-
